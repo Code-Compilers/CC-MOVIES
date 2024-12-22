@@ -1,0 +1,40 @@
+.row {
+    margin-left: 9px;
+    color: white;
+  }
+  
+  .row__posters {
+    display: flex;
+    gap: 20px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    padding: 20px;
+    /*scrollbar-width: none;*/
+  }
+  h3{
+    margin-left: 50px;
+   font-size: 13px;
+  }
+  .row__posters::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+  }
+
+  .row__poster {
+    object-fit: contain;
+    width: 100%;
+    max-height: 180px;
+    margin-right: 150px;
+    
+    margin-left: 20px; /* Increased space between posters */
+    transition: transform 450ms;
+  }
+  
+  .row__poster:hover {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  
+  .row__posterLarge {
+    max-height: 250px;
+  }
+  
