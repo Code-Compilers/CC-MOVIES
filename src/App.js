@@ -1,23 +1,14 @@
-import logo from './logo.svg';
+import Row from "./components/Row";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Row title="Popular Movies" fetchUrl="/movie/popular"/>
+      <Row title="Top Rated" fetchUrl="/movie/top_rated"/>
+      <Row title="Upcoming Movies" fetchUrl="/movie/upcoming"/>
+      
     </div>
   );
 }
