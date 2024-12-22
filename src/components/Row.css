@@ -1,6 +1,6 @@
 .row {
     margin-left: 9px;
-    color: white;
+    color: rgb(0, 0, 0);
   }
   
   .row__posters {
@@ -12,7 +12,7 @@
     /*scrollbar-width: none;*/
   }
   h3{
-    margin-left: 50px;
+    margin-left: 20px;
    font-size: 13px;
   }
   .row__posters::-webkit-scrollbar {
