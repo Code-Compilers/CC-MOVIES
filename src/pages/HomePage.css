@@ -1,0 +1,121 @@
+/* Body and General Styling */
+body {
+    background-color: #f4f4f4;  /* Light background for a cleaner look */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container Styling */
+.container {
+    position: relative;
+    padding: 20px;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;  /* Standard dark color for the title */
+}
+
+/* Hamburger Menu (Standard lines) */
+.hamburger-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.hamburger-line {
+    height: 4px;
+    background-color: #333; /* Dark lines for the hamburger */
+    border-radius: 2px;
+}
+
+/* Dropdown Menu for Genres */
+.dropdown-menu {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #fff;  /* White background for the dropdown */
+    border: 1px solid #ccc;  /* Light border for the dropdown */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+    border-radius: 5px;
+    display: none;  /* Hidden by default */
+}
+
+.dropdown-menu.active {
+    display: block;  /* Show dropdown when active */
+}
+
+.dropdown-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dropdown-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    color: #333;  /* Standard text color */
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu ul li:hover {
+    background-color: #f0f0f0;  /* Lighter background on hover */
+}
+
+/* Search Form */
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 2px solid #ccc;  /* Neutral border color */
+    background-color: #fff;  /* White background for the input */
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.search-input:focus {
+    border-color: #333;  /* Dark border on focus */
+    box-shadow: 0 0 5px #ccc;  /* Subtle box-shadow on focus */
+}
+
+.search-button {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background-color: #333;  /* Dark button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #555;  /* Slightly lighter dark color on hover */
+    transform: scale(1.05);  /* Slight zoom on hover */
+}
+
+.search-button:active {
+    background-color: #222;  /* Darker color when clicked */
+    transform: scale(0.98);
+}
