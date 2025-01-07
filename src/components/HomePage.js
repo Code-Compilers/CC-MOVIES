@@ -9,7 +9,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   
-  const API_KEY = '5d63599f'; // Better to move this to environment variables
+  const API_KEY = process.env.REACT_APP_API_KEY; // Use environment variables
   const BASE_URL = 'https://www.omdbapi.com';
 
   useEffect(() => {
@@ -18,10 +18,7 @@ const HomePage = () => {
 
   const fetchInitialMovies = async () => {
     try {
-      const response = await axios.get(
-        `${BASE_URL}/?s=5d63599f&apikey=${API_KEY}`
-      );
-      
+      const response = await axios.get(`${BASE_URL}/?s=&apikey=${API_KEY}`);
       if (response.data.Response === 'True') {
         setMovies(response.data.Search);
       } else {
@@ -47,10 +44,7 @@ const HomePage = () => {
     setError(null);
     
     try {
-      const response = await axios.get(
-        `${BASE_URL}/?s=${search.trim()}&apikey=${API_KEY}`
-      );
-      
+      const response = await axios.get(`${BASE_URL}/?s=${search.trim()}&apikey=${API_KEY}`);
       if (response.data.Response === 'True') {
         setMovies(response.data.Search);
       } else {
@@ -109,7 +103,6 @@ const HomePage = () => {
       </div>
     </div>
   );
-
 };
 
 export default HomePage;
