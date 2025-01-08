@@ -54,6 +54,15 @@
     border-radius: 5px;
   }
 
+  
+  
+  .category-name {
+    font-size: 1.5rem;
+    margin-right: 89%;
+    margin-bottom: 20px; /* Space between category name and movie list */
+  }
+  
+
 
 
   .trailer-modal {
