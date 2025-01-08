@@ -16,6 +16,7 @@ body {
 /* Navbar Styling */
 .navbar {
     display: flex;
+    margin-bottom: 50%;
     justify-content: space-between;
     align-items: center;
     background-color: #333;
@@ -25,6 +26,7 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    
 }
 
 .navbar .title {
@@ -61,7 +63,7 @@ body {
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    display: none;
+    display: block;
     width: 200px;
 }
 
@@ -177,4 +179,8 @@ body {
 .movie-item p {
     font-size: 1rem;
     color: #666;
+}
+
+.movies-list{
+  margin-top: 5%;
 }
