@@ -29,9 +29,9 @@ const HomePage = ({ onGenreSelect }) => {
         </button>
         {isMenuOpen && (
           <ul className="dropdown-menu">
-            <li onClick={() => onGenreSelect("")}>Popular</li>
+            <li onClick={() => onGenreSelect("", "Popular")}>Popular</li>
             {genres.map((genre) => (
-              <li key={genre.id} onClick={() => onGenreSelect(genre.id)}>
+              <li key={genre.id} onClick={() => onGenreSelect(genre.id, genre.name)}>
                 {genre.name}
               </li>
             ))}
