@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MovieList.css";
 
-const MovieList = ({ fetchUrl }) => {
+const MovieList = ({ fetchUrl, categoryName }) => {
   const [movies, setMovies] = useState([]);
   const [trailerKey, setTrailerKey] = useState(null);
   const [movieDetails, setMovieDetails] = useState(null); // Added state for movie details
@@ -66,25 +66,27 @@ const MovieList = ({ fetchUrl }) => {
 
   return (
     <div className="movie-list">
+      {/*Display the category Name*/}
+      <h2 className="category-name">{categoryName}</h2>
       {loading ? (
         <p>Loading movies...</p>
       ) : movies.length === 0 ? (
         <p>No movies available</p>
       ) : (
+       
         movies.map((movie) => (
           <div
             key={movie.id}
             className="movie-item"
             onClick={() => handlePosterClick(movie.id)}
           >
+            
             <img
               src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title || movie.name}
               className="movie-poster"
             />
-            <h3 className="movie-title">{movie.title || movie.name}</h3>
-            
-            <h5 className="movie-rating">Rating: {movie.vote_average}</h5>
+            <h4 className="movie-title">{movie.title || movie.name}</h4>
             
           </div>
         ))
@@ -109,7 +111,7 @@ const MovieList = ({ fetchUrl }) => {
               <h2 className="movie-title">
                 {movieDetails.title || movieDetails.name}
               </h2>
-              <h5 className="movie-date">
+               <h5 className="movie-date">
                 Release Date: {movieDetails.release_date || movieDetails.first_air_date}
               </h5>
               <h5 className="movie-rating">
