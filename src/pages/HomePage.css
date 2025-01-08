@@ -119,3 +119,68 @@ body {
     background-color: #222;  /* Darker color when clicked */
     transform: scale(0.98);
 }
+
+/* Movie Grid */
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);  /* 5 equal columns */
+    gap: 20px;  /* Space between grid items */
+    margin-top: 30px;  /* Space from the search bar */
+  }
+  
+  /* For smaller screens, you might want to reduce the number of columns */
+  @media (max-width: 1200px) {
+    .movie-grid {
+      grid-template-columns: repeat(5, 1fr);  /* 4 columns on medium screens */
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .movie-grid {
+      grid-template-columns: repeat(4, 1fr);  /* 3 columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .movie-grid {
+      grid-template-columns: repeat(2, 1fr);  /* 2 columns on very small screens */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .movie-grid {
+      grid-template-columns: 1fr;  /* 1 column on extra small screens */
+    }
+  }
+  
+
+.movie-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-item:hover {
+    transform: scale(1.05);  /* Slight zoom effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);  /* Deeper shadow on hover */
+}
+
+.movie-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.movie-item h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.movie-item p {
+    font-size: 1rem;
+    color: #666;
+}

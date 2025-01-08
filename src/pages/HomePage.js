@@ -25,9 +25,10 @@ const HomePage = () => {
   // Fetch movies based on search term
   const fetchInitialMovies = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/?s=batman&apikey=${API_KEY}`);
-      if (response.data.Response === 'True') {
-        setMovies(response.data.Search);
+      // Fetching popular movies as a default search (change this if needed)
+      const response = await axios.get(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+      if (response.data.results) {
+        setMovies(response.data.results);
       }
     } catch (error) {
       console.error('Error fetching movies:', error);
@@ -41,9 +42,10 @@ const HomePage = () => {
     setLoading(true);
 
     try {
-      const response = await axios.get(`${BASE_URL}/?s=${searchTerm}&apikey=${API_KEY}`);
-      if (response.data.Response === 'True') {
-        setMovies(response.data.Search);
+      // Using search endpoint for movie search
+      const response = await axios.get(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchTerm}`);
+      if (response.data.results) {
+        setMovies(response.data.results);
       } else {
         setMovies([]);  // Clear movies if no results are found
       }
@@ -57,7 +59,7 @@ const HomePage = () => {
 
   return (
     <div className="container">
-      <h1 className="title">Welcome to MovieLand</h1>
+      <h1 className="title">Welcome to CC Movies</h1>
 
       {/* Hamburger Menu */}
       <div className="hamburger-menu" onClick={toggleMenu}>
@@ -93,19 +95,20 @@ const HomePage = () => {
       {loading && <div className="loading">Loading movies...</div>}
 
       <div className="movie-grid">
+        
         {movies.map((movie) => (
-          <div key={movie.imdbID} className="movie-card">
+          <div key={movie.id} className="movie-card">
             <img
-              src={movie.Poster !== 'N/A' ? movie.Poster : '/placeholder-poster.jpg'}
-              alt={movie.Title}
+              src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} // Correct poster URL
+              alt={movie.title}
               className="movie-poster"
               onError={(e) => {
-                e.target.src = '/placeholder-poster.jpg';
+                e.target.src = '/placeholder-poster.jpg'; // Fallback for missing images
               }}
             />
             <div className="movie-info">
-              <h3>{movie.Title}</h3>
-              <p>{movie.Year}</p>
+              <h3>{movie.title}</h3>
+              <p>{movie.release_date}</p>
             </div>
           </div>
         ))}
