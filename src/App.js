@@ -5,6 +5,7 @@ import MovieList from "./components/MovieList";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [categoryName, setCategoryName] = useState("Popular");
 
   const constructFetchUrl = (genreId) => {
     if (genreId) {
@@ -13,12 +14,19 @@ function App() {
     return `${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
   };
 
+
+
+  const handleGenreSelect = (genreId, genreName) => {
+    setSelectedGenre(genreId);
+    setCategoryName(genreName);
+  };
+
   const fetchUrl = constructFetchUrl(selectedGenre);
 
   return (
     <div className="App">
-      <HomePage onGenreSelect={setSelectedGenre} />
-      <MovieList fetchUrl={fetchUrl} />
+      <HomePage onGenreSelect={handleGenreSelect} />
+      <MovieList fetchUrl={fetchUrl} categoryName={categoryName}/>
     </div>
   );
 }
