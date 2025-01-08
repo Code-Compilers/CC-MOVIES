@@ -26,17 +26,17 @@ const [movies, setMovies] = useState([]); // For storing fetched movies
   };
 
   // Fetch initial movies
-  const fetchMovies = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`);
-      setMovies(response.data.results);
-    } catch (error) {
-      console.error('Error fetching movies:', error);
-    } finally {
-      setLoading(false);
-   }
-  };
+  //const fetchMovies = async () => {
+  //  setLoading(true);
+   // try {
+    //  const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`);
+    //  setMovies(response.data.results);
+    //} catch (error) {
+    //  console.error('Error fetching movies:', error);
+    //} finally {
+     // setLoading(false);
+  // }
+  ///}/;
 
 
   // Handle search term changes and submit
@@ -85,7 +85,6 @@ const [movies, setMovies] = useState([]); // For storing fetched movies
         <div key={movie.id} className="movie-card">
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
           <h3>{movie.title}</h3>
-          <h3>{movie.description}</h3>
         </div>
       ))}
     </div>
