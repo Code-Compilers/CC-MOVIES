@@ -1,34 +1,33 @@
-// SearchBar.js
 import React, { useState } from 'react';
 
 const SearchBar = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Handles input changes
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  // Handles form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     onSearch(searchTerm);
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          value={searchTerm} 
-          onChange={handleInputChange} 
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={handleInputChange}
           placeholder="Search for movies..."
+          className="search-input"
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="search-button">
+          Search
+        </button>
       </form>
     </div>
   );
 };
 
-export default SearchBar;  // Correct export
-
+export default SearchBar;
