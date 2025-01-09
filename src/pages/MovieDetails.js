@@ -87,7 +87,7 @@ const MovieDetails = ({ movie }) => {
         <section className="cast-section">
           <h2>Featured Cast</h2>
           <div className="cast-grid">
-            {movie.credits?.cast?.map(person => (
+            {movie.credits?.cast?.slice(0, 9).map(person => (
               <div key={person.id} className="cast-card">
                 <div className="cast-image">
                   <img
@@ -116,23 +116,6 @@ const MovieDetails = ({ movie }) => {
                     alt={provider.provider_name}
                   />
                   <p>{provider.provider_name}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {movie.reviews?.results?.length > 0 && (
-          <section className="reviews-section">
-            <h2>User Reviews</h2>
-            <div className="reviews-grid">
-              {movie.reviews.results.map(review => (
-                <div key={review.id} className="review-card">
-                  <div className="review-header">
-                    <h3>{review.author}</h3>
-                    <span>★ {review.author_details.rating}/10</span>
-                  </div>
-                  <p>{review.content.slice(0, 300)}...</p>
                 </div>
               ))}
             </div>
