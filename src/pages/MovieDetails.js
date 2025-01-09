@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MovieDetails.css";
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, onBack }) => {
   const [franchiseMovies, setFranchiseMovies] = useState([]);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const MovieDetails = ({ movie }) => {
 
   return (
     <div className="movie-details-container">
+      <button className="back-button" onClick={onBack}>Back to Search Results</button>
       {/* Hero Section with Backdrop */}
       <div className="movie-hero" style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`

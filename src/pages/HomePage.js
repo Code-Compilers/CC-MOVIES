@@ -5,7 +5,7 @@ import SearchBar from '../components/SearchBar'; // Ensure the path is correct
 import './HomePage.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-const HomePage = ({onGenreSelect }) => {
+const HomePage = ({ onGenreSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,6 +24,9 @@ const HomePage = ({onGenreSelect }) => {
     }
   };
 
+  const handleBack = () => {
+    setSelectedMovie(null);
+  };
 
   const genres = [
     { id: 28, name: "Action" },
@@ -37,20 +40,6 @@ const HomePage = ({onGenreSelect }) => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  // Fetch initial movies
-  //const fetchMovies = async () => {
-  //  setLoading(true);
-   // try {
-    //  const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`);
-    //  setMovies(response.data.results);
-    //} catch (error) {
-    //  console.error('Error fetching movies:', error);
-    //} finally {
-     // setLoading(false);
-  // }
-  ///}/;
-
 
   // Handle search term changes and submit
   const handleSearch = async (term) => {
@@ -90,30 +79,32 @@ const HomePage = ({onGenreSelect }) => {
           )}
         </div>
       </nav>
-              {selectedMovie ? (
-                <MovieDetails movie={selectedMovie} />
-              ) : (
-                movies.length > 0 && (
-                  <div className="movies-grid">
-                    {movies.map((movie) => (
-                      <div 
-                        key={movie.id} 
-                        className="movie-card"
-                        onClick={() => handleMovieClick(movie.id)}
-                      >
-                        <img 
-                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                          alt={movie.title} 
-                          className="movie-poster"
-                        />
-                        <h3 className="movie-title">{movie.title}</h3>
-                      </div>
-                    ))}
-                  </div>
-                )
-              )}
+      <div className="container">
+        {selectedMovie ? (
+          <MovieDetails movie={selectedMovie} onBack={handleBack} />
+        ) : (
+          movies.length > 0 && (
+            <div className="movies-grid">
+              {movies.map((movie) => (
+                <div 
+                  key={movie.id} 
+                  className="movie-card"
+                  onClick={() => handleMovieClick(movie.id)}
+                >
+                  <img 
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                    alt={movie.title} 
+                    className="movie-poster"
+                  />
+                  <h3 className="movie-title">{movie.title}</h3>
+                </div>
+              ))}
             </div>
+          )
+        )}
+      </div>
+    </div>
   );
 };
-                      
+
 export default HomePage;
