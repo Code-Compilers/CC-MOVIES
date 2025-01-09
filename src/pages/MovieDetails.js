@@ -48,21 +48,22 @@ const MovieDetails = ({ movie }) => {
           <h2>Overview</h2>
           <p>{movie.overview}</p>
         </section>
-
-        {movie.videos?.length > 0 && (
           <section className="trailer-section">
             <h2>Official Trailer</h2>
             <div className="trailer-container">
-              <iframe
-                src={`https://www.youtube.com/embed/${movie.videos[0].key}`}
-                title="Movie Trailer"
-                frameBorder="0"
-                allowFullScreen
-              />
+              {movie.videos?.results?.find(video => video.type === "Trailer" && video.site === "YouTube") ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${movie.videos.results.find(video => video.type === "Trailer" && video.site === "YouTube").key}`}
+                  title="Movie Trailer"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <p>No trailer available</p>
+              )}
             </div>
           </section>
-        )}
-
         <section className="cast-section">
           <h2>Featured Cast</h2>
           <div className="cast-grid">
