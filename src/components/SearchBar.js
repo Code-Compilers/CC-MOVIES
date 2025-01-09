@@ -1,20 +1,7 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const SearchBar = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default SearchBar
-=======
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
@@ -44,4 +31,3 @@ const SearchBar = ({ onSearch }) => {
 };
 
 export default SearchBar;
->>>>>>> origin/Development

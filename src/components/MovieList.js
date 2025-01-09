@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React from 'react'
-
-const MovieList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
-
-export default MovieList
-=======
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./MovieList.css";
@@ -149,4 +136,3 @@ const MovieList = ({ fetchUrl, categoryName }) => {
 };
 
 export default MovieList;
->>>>>>> origin/Development
