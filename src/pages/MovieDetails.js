@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./MovieDetails.css";
 
 const MovieDetails = ({ movie }) => {
+  const [franchiseMovies, setFranchiseMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchFranchiseMovies = async () => {
+      if (movie.belongs_to_collection) {
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_BASE_URL}/collection/${movie.belongs_to_collection.id}?api_key=${process.env.REACT_APP_API_KEY}`
+          );
+          setFranchiseMovies(response.data.parts.slice(0, 4));
+        } catch (error) {
+          console.error("Error fetching franchise movies:", error);
+        }
+      }
+    };
+
+    fetchFranchiseMovies();
+  }, [movie]);
+
   return (
     <div className="movie-details-container">
       {/* Hero Section with Backdrop */}
@@ -48,26 +68,26 @@ const MovieDetails = ({ movie }) => {
           <h2>Overview</h2>
           <p>{movie.overview}</p>
         </section>
-          <section className="trailer-section">
-            <h2>Official Trailer</h2>
-            <div className="trailer-container">
-              {movie.videos?.results?.find(video => video.type === "Trailer" && video.site === "YouTube") ? (
-                <iframe
-                  src={`https://www.youtube.com/embed/${movie.videos.results.find(video => video.type === "Trailer" && video.site === "YouTube").key}`}
-                  title="Movie Trailer"
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <p>No trailer available</p>
-              )}
-            </div>
-          </section>
+        <section className="trailer-section">
+          <h2>Official Trailer</h2>
+          <div className="trailer-container">
+            {movie.videos?.results?.find(video => video.type === "Trailer" && video.site === "YouTube") ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${movie.videos.results.find(video => video.type === "Trailer" && video.site === "YouTube").key}`}
+                title="Movie Trailer"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <p>No trailer available</p>
+            )}
+          </div>
+        </section>
         <section className="cast-section">
           <h2>Featured Cast</h2>
           <div className="cast-grid">
-            {movie.cast?.map(person => (
+            {movie.credits?.cast?.map(person => (
               <div key={person.id} className="cast-card">
                 <div className="cast-image">
                   <img
@@ -85,25 +105,11 @@ const MovieDetails = ({ movie }) => {
           </div>
         </section>
 
-        <section className="crew-section">
-          <h2>Key Crew</h2>
-          <div className="crew-grid">
-            {movie.crew?.filter(person => 
-              ['Director', 'Screenplay', 'Story', 'Producer'].includes(person.job)
-            ).map(person => (
-              <div key={person.id} className="crew-card">
-                <h3>{person.name}</h3>
-                <p>{person.job}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {movie.watchProviders?.US && (
+        {movie.watchProviders?.results?.US && (
           <section className="watch-section">
             <h2>Where to Watch</h2>
             <div className="providers-grid">
-              {movie.watchProviders.US.flatrate?.map(provider => (
+              {movie.watchProviders.results.US.flatrate?.map(provider => (
                 <div key={provider.provider_id} className="provider-card">
                   <img 
                     src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
@@ -116,11 +122,11 @@ const MovieDetails = ({ movie }) => {
           </section>
         )}
 
-        {movie.reviews?.length > 0 && (
+        {movie.reviews?.results?.length > 0 && (
           <section className="reviews-section">
             <h2>User Reviews</h2>
             <div className="reviews-grid">
-              {movie.reviews.map(review => (
+              {movie.reviews.results.map(review => (
                 <div key={review.id} className="review-card">
                   <div className="review-header">
                     <h3>{review.author}</h3>
@@ -133,26 +139,11 @@ const MovieDetails = ({ movie }) => {
           </section>
         )}
 
-        {movie.images?.backdrops.length > 0 && (
-          <section className="gallery-section">
-            <h2>Behind the Scenes</h2>
-            <div className="gallery-grid">
-              {movie.images.backdrops.slice(0, 6).map((image, index) => (
-                <img 
-                  key={index}
-                  src={`https://image.tmdb.org/t/p/w500${image.file_path}`}
-                  alt={`Behind the scenes ${index + 1}`}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        {movie.keywords?.length > 0 && (
+        {movie.keywords?.keywords?.length > 0 && (
           <section className="keywords-section">
             <h2>Keywords</h2>
             <div className="keyword-tags">
-              {movie.keywords.map(keyword => (
+              {movie.keywords.keywords.map(keyword => (
                 <span key={keyword.id} className="keyword-tag">
                   {keyword.name}
                 </span>
@@ -161,23 +152,11 @@ const MovieDetails = ({ movie }) => {
           </section>
         )}
 
-        <section className="external-links">
-          <h2>External Links</h2>
-          <div className="links-grid">
-            {movie.externalIds?.imdb_id && (
-              <a href={`https://www.imdb.com/title/${movie.externalIds.imdb_id}`} 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="external-link">
-                IMDb
-              </a>
-            )}
-          </div>
-        </section>
+        {franchiseMovies.length > 0 && (
           <section className="similar-section">
-            <h2>Similar Movies</h2>
+            <h2>Movies in the Same Franchise</h2>
             <div className="similar-grid">
-              {movie.similar?.results?.map(similar => (
+              {franchiseMovies.map(similar => (
                 <div key={similar.id} className="similar-card">
                   <img
                     src={`https://image.tmdb.org/t/p/w200${similar.poster_path}`}
@@ -189,7 +168,8 @@ const MovieDetails = ({ movie }) => {
               ))}
             </div>
           </section>
-        </div>
+        )}
+      </div>
     </div>
   );
 };
