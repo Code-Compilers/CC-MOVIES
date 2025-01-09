@@ -90,27 +90,29 @@ const HomePage = ({onGenreSelect }) => {
           )}
         </div>
       </nav>
-      
-      {selectedMovie ? (
-        <MovieDetails movie={selectedMovie} />
-      ) : (
-        <div className="movies-list">
-          {movies.map((movie) => (
-            <div 
-              key={movie.id} 
-              className="movie-card"
-              onClick={() => handleMovieClick(movie.id)}
-            >
-              <img 
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                alt={movie.title} 
-              />
-              <h3>{movie.title}</h3>
+              {selectedMovie ? (
+                <MovieDetails movie={selectedMovie} />
+              ) : (
+                movies.length > 0 && (
+                  <div className="movies-grid">
+                    {movies.map((movie) => (
+                      <div 
+                        key={movie.id} 
+                        className="movie-card"
+                        onClick={() => handleMovieClick(movie.id)}
+                      >
+                        <img 
+                          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                          alt={movie.title} 
+                          className="movie-poster"
+                        />
+                        <h3 className="movie-title">{movie.title}</h3>
+                      </div>
+                    ))}
+                  </div>
+                )
+              )}
             </div>
-          ))}
-        </div>
-      )}
-    </div>
   );
 };
                       
