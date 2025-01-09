@@ -67,9 +67,9 @@ const [movies, setMovies] = useState([]); // For storing fetched movies
           </button>
           {isMenuOpen && (
             <ul className="dropdown-menu">
-              <li onClick={() => onGenreSelect("", "Popular")}>Popular</li>
+              <li onClick={() => {onGenreSelect("", "Popular"); setIsMenuOpen(false)}}>Popular</li>
               {genres.map((genre) => (
-                <li key={genre.id} onClick={() => onGenreSelect(genre.id, genre.name)}>
+                <li key={genre.id} onClick={() => {onGenreSelect(genre.id, genre.name); setIsMenuOpen(false)}}>
                   {genre.name}
                 </li>
               ))}
