@@ -1,6 +1,6 @@
 .hero-slide {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   overflow: hidden;
   margin-top: 4rem; /* Increased the margin-bottom */
   position: relative;
