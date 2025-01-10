@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
+import "swiper/swiper-bundle.min.css";   // Swiper's general styles
+import "swiper/modules/navigation/navigation.min.css";  // Navigation styles
+
 import "./HeroSlide.css";
 
 const HeroSlide = () => {
