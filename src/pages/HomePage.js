@@ -43,26 +43,28 @@ const HomePage = ({ onGenreSelect }) => {
 
   // Handle search term changes and submit
   const handleSearch = async (term) => {
-    console.log('Search term:', term); // Debug log
+    console.log("Search term:", term); // Debug log
     setSearchTerm(term);
     setLoading(true);
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${term}`);
-      console.log('Search results:', response.data.results); // Debug log
+      const response = await axios.get(
+        `${process.env.REACT_APP_BASE_URL}/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${term}`
+      );
+      console.log("Search results:", response.data.results); // Debug log
       setMovies(response.data.results || []);
     } catch (error) {
-      console.error('Error fetching search results:', error);
+      console.error("Error fetching search results:", error);
     } finally {
       setLoading(false);
     }
   };
-  
+
   return (
     <div>
       <nav className="navbar">
         <h1 className="title">CC Movies</h1>
-        <SearchBar onSearch={handleSearch}/>
-  
+        <SearchBar onSearch={handleSearch} />
+
         <div className="navbarlinks">
           <button className="hamburger" onClick={toggleMenu}>
             <i className="fas fa-bars"></i>
