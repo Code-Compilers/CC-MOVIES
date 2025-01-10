@@ -2,6 +2,8 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import { useState } from "react";
 import MovieList from "./components/MovieList";
+import HeroSlide from "./components/HeroSlide";
+import MovieCard from "./components/MovieCard";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState("");
@@ -14,8 +16,6 @@ function App() {
     return `${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
   };
 
-
-
   const handleGenreSelect = (genreId, genreName) => {
     setSelectedGenre(genreId);
     setCategoryName(genreName);
@@ -25,8 +25,10 @@ function App() {
 
   return (
     <div className="App">
+      <HeroSlide />
+      <MovieCard />
       <HomePage onGenreSelect={handleGenreSelect} />
-      <MovieList fetchUrl={fetchUrl} categoryName={categoryName}/>
+      <MovieList fetchUrl={fetchUrl} categoryName={categoryName} />
     </div>
   );
 }
