@@ -22,7 +22,7 @@
 }
 
 .hero-slide-item__content__poster {
-  width:fit-content;
+  width: 100%;
   height: 100%;
   object-fit: cover;
 }
