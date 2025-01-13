@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-=======
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
->>>>>>> e8ba6d3b24f338816249237fc1c35c780aecae4a
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -32,67 +28,6 @@ const HeroSlide = () => {
     fetchMovies();
   }, []);
 
-<<<<<<< HEAD
-  return React.createElement(
-    "div",
-    { className: "hero-slide" },
-    React.createElement(
-      Swiper,
-      {
-        ref: swiperRef,
-        modules: [Navigation, Pagination, Autoplay],
-        navigation: true,
-        pagination: { clickable: true },
-        spaceBetween: 0,
-        slidesPerView: 1,
-        loop: true,
-        className: "hero-swiper",
-      },
-      loading
-        ? React.createElement(
-            SwiperSlide,
-            { className: "hero-slide-item" },
-            React.createElement("p", null, "Loading...")
-          )
-        : movies.length === 0
-        ? React.createElement(
-            SwiperSlide,
-            { className: "hero-slide-item" },
-            React.createElement("p", null, "No movies available")
-          )
-        : movies.map((movie) =>
-            React.createElement(
-              SwiperSlide,
-              { key: movie.id, className: "hero-slide-item" },
-              React.createElement(
-                "div",
-                { className: "hero-slide-item__content" },
-                React.createElement("img", {
-                  src: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
-                  alt: movie.title || movie.name,
-                  className: "hero-slide-item__content__poster",
-                })
-              )
-            )
-          ),
-      React.createElement(
-        "div",
-        {
-          className: "swiper-button-prev",
-          onClick: () => swiperRef.current?.swiper?.slidePrev(),
-        },
-        null
-      ),
-      React.createElement(
-        "div",
-        {
-          className: "swiper-button-next",
-          onClick: () => swiperRef.current?.swiper?.slideNext(),
-        },
-        null
-      )
-    )
-=======
   return (
     <div className="hero-slide">
       <Swiper
@@ -139,7 +74,6 @@ const HeroSlide = () => {
         )}
       </Swiper>
     </div>
->>>>>>> e8ba6d3b24f338816249237fc1c35c780aecae4a
   );
 };
 
