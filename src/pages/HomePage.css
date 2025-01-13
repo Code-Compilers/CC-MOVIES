@@ -170,6 +170,8 @@ body {
     align-items: center;
     cursor: pointer;
     transition: transform 0.2s ease;
+    width:200px;
+    height: auto;
 }
 
 .movie-card:hover {
