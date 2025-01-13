@@ -97,3 +97,112 @@
   font-size: 1rem;
   font-weight: bold;
 }
+  .movie-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .movie-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  .movie-popup-content {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    width: 75%;
+    height: 85vh;
+    overflow-y: auto;
+    z-index: 1001;
+    box-sizing: border-box;
+  }
+
+  /* Large screens */
+  @media screen and (min-width: 1200px) {
+    .movie-popup-content {
+      width: 65%;
+      max-width: 1200px;
+    }
+  }
+
+  /* Medium screens */
+  @media screen and (max-width: 992px) {
+    .movie-popup-content {
+      width: 80%;
+      height: 90vh;
+    }
+  }
+
+  /* Small screens */
+  @media screen and (max-width: 768px) {
+    .movie-popup-content {
+      width: 90%;
+      height: 95vh;
+    }
+  }
+
+  /* Extra small screens */
+  @media screen and (max-width: 480px) {
+    .movie-popup-content {
+      width: 95%;
+      height: 98vh;
+      margin: 5px;
+    }
+  }
+
+  /* Ensure content inside popup stays responsive */
+  .movie-popup-content img,
+  .movie-popup-content iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .popup-close-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+  }
+
+  .popup-close-btn:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+.trailer-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.trailer-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
