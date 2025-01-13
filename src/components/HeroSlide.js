@@ -1,10 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.min.css";   // Swiper's general styles
-import "swiper/modules/navigation/navigation.min.css";  // Navigation styles
-
+import "swiper/css";
+import "swiper/css/navigation";
 import "./HeroSlide.css";
 
 const HeroSlide = () => {
@@ -44,7 +43,7 @@ const HeroSlide = () => {
       Swiper,
       {
         ref: swiperRef,
-        modules: [Navigation, Pagination],
+        modules: [Navigation, Pagination, Autoplay],
         navigation: true,
         pagination: { clickable: true },
         spaceBetween: 0,
