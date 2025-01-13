@@ -9,7 +9,7 @@
     background-size: 600px;
     background-position: center;
     position: relative;
-    border-radius: 20px;
+    border-radius: none;
   }
   
   .movie-hero::before {
@@ -19,7 +19,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), #0a0a0a);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.397), #0a0a0a);
   }
   
   .hero-content {
@@ -128,7 +128,7 @@
       }
   .cast-grid {
     display: grid;
-    grid-template-columns: repeat(4, 200px);
+    grid-template-columns: repeat(3, 200px);
     gap: 30px;
     margin: 0 auto;
     padding-top: 50px;
@@ -140,17 +140,19 @@
   }
   
   .cast-card {
-    width: 200px;
+    width: 150px;
+    height: 100%;
     background: #ff5e00;
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.452);
+    padding: 0px;
   }
   
   .cast-image {
     width: 100%;
-    height: 250px;
+    height: auto;
   }
   
   .cast-image img {
@@ -160,23 +162,23 @@
   }
   
   .cast-info {
-    padding: 12px;
+    padding: 15px;
     text-align: center;
   }
   
   .cast-info h3 {
-    font-size: 20px;
+    font-size: 14px;
     color: #0a0a0a;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
   }
   
   .cast-info p {
-    font-size: 16px;
+    font-size: 14px;
   }
   
   .crew-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     margin: 20px 0;
   }
