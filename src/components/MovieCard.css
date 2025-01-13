@@ -32,7 +32,6 @@
 
 .movie-card:hover {
   transform: scale(1.05);
-  background-color: #ff5e00;
 }
 
 .movie-poster {

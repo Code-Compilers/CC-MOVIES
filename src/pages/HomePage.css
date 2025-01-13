@@ -6,7 +6,11 @@ body {
     margin: 0;
     padding: 0;
 }
+ h2{
+color: #ff5e00;
+font-size: 20px;
 
+ }
 /* Container Styling */
 .container {
     position: relative;
@@ -29,6 +33,11 @@ body {
     
 }
 
+.logo{
+    height: 70px;
+    width: 70px;
+    
+}
 .navbar .title {
     color: #fff;
     font-size: 1.8rem;
