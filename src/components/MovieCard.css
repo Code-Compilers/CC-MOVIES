@@ -19,26 +19,23 @@
 
 .movie-card {
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s ease;
+  color: #ff5e00;
+  row-gap: 50px;
+  height: 100%;
+  width: 200px;
 }
 
 .movie-card:hover {
   transform: scale(1.05);
+  background-color: #ff5e00;
 }
 
 .movie-poster {
   width: 100%;
   height: auto;
-  border-bottom: 1px solid #ddd;
-}
-
-.movie-title {
-  padding: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
 }
