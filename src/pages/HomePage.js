@@ -4,11 +4,13 @@ import MovieDetails from './MovieDetails';
 import SearchBar from '../components/SearchBar';
 import './HomePage.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import logo from '../components/Logo.png'; 
+
 
 const HomePage = ({ onGenreSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [ setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -71,7 +73,9 @@ const HomePage = ({ onGenreSelect }) => {
   return (
     <div>
       <nav className="navbar">
-        <h1 className="title">CC Movies</h1>
+      <div className="navbar-logo">
+          <img src= {logo} alt="Logo.png" className="logo" />  {/* Display the logo */}
+        </div>
         <SearchBar onSearch={handleSearch} />
         <div className="navbarlinks">
           <button className="hamburger" onClick={toggleMenu}>

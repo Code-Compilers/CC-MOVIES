@@ -1,14 +1,15 @@
 /* MovieDetails.css */
 .movie-details-container {
-    color: #fff;
-    background: #0a0a0a;
+    color: #0a0a0a;
+    background: #ff5e00;
   }
   
   .movie-hero {
     height: 60vh;
-    background-size: cover;
+    background-size: 600px;
     background-position: center;
     position: relative;
+    border-radius: none;
   }
   
   .movie-hero::before {
@@ -18,7 +19,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.8), #0a0a0a);
+    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.397), #0a0a0a);
   }
   
   .hero-content {
@@ -35,7 +36,7 @@
   .hero-content h1 {
     font-size: 3.5rem;
     margin-bottom: 20px;
-    background: linear-gradient(45deg, #00f2fe, #4facfe);
+    background: linear-gradient(45deg, #0a0a0a, #fff);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -44,7 +45,7 @@
   .movie-tagline {
     font-size: 1.4rem;
     font-style: italic;
-    color: #00f2fe;
+    color: #ff5e00;
     margin: 15px 0;
     text-align: center;
   }
@@ -57,11 +58,12 @@
   }
   
   .genre-tag {
-    background: rgba(0, 242, 254, 0.2);
+    background: #0a0a0a;
     padding: 8px 16px;
     border-radius: 20px;
     margin-right: 10px;
     font-size: 0.9rem;
+    color: #ff5e00;
   }
   
   .main-content {
@@ -75,7 +77,7 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin: 30px 0;
-    background: rgba(0, 242, 254, 0.05);
+    background: rgba(0, 0, 0, 0.05);
     padding: 20px;
     border-radius: 12px;
   }
@@ -86,7 +88,7 @@
   
   .stat-value {
     font-size: 1.8rem;
-    color: #00f2fe;
+    color: #0a0a0a;
     margin-bottom: 8px;
   }
   
@@ -102,7 +104,7 @@
   
   .main-content h2 {
     font-size: 2rem;
-    color: #00f2fe;
+    color: #fff;
     margin-bottom: 30px;
   }
       .trailer-section {
@@ -114,7 +116,7 @@
         padding-bottom: 56.25%; /* 16:9 aspect ratio */
         height: 0;
         overflow: hidden;
-        border-radius: 12px;
+        border-radius: 15px;
       }
 
       .trailer-container iframe {
@@ -126,24 +128,31 @@
       }
   .cast-grid {
     display: grid;
-    grid-template-columns: repeat(3, 150px);
-    gap: 60px;
+    grid-template-columns: repeat(3, 200px);
+    gap: 30px;
     margin: 0 auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-right: 50px;
+    padding-left: 50px;
     justify-content: center;
+    background-color: #0a0a0a;
   }
   
   .cast-card {
     width: 150px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 12px;
+    height: 100%;
+    background: #ff5e00;
+    border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.452);
+    padding: 0px;
   }
   
   .cast-image {
     width: 100%;
-    height: 220px;
+    height: auto;
   }
   
   .cast-image img {
@@ -153,32 +162,31 @@
   }
   
   .cast-info {
-    padding: 12px;
+    padding: 15px;
     text-align: center;
   }
   
   .cast-info h3 {
-    font-size: 0.95rem;
-    color: #00f2fe;
-    margin-bottom: 4px;
+    font-size: 14px;
+    color: #0a0a0a;
+    margin-bottom: 5px;
   }
   
   .cast-info p {
-    font-size: 0.85rem;
-    opacity: 0.8;
+    font-size: 14px;
   }
   
   .crew-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 20px;
     margin: 20px 0;
   }
   
   .crew-card {
-    background: rgba(0, 242, 254, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 15px;
     text-align: center;
   }
   
@@ -223,7 +231,7 @@
   
   .gallery-grid img {
     width: 100%;
-    border-radius: 10px;
+    border-radius: 15px;
     transition: transform 0.3s ease;
   }
   
@@ -239,7 +247,7 @@
   }
   
   .keyword-tag {
-    background: rgba(0, 242, 254, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     padding: 8px 16px;
     border-radius: 20px;
     font-size: 0.9rem;
@@ -252,7 +260,7 @@
   .external-link {
     display: inline-block;
     padding: 10px 20px;
-    background: linear-gradient(45deg, #00f2fe, #4facfe);
+    background: linear-gradient(45deg, #0a0a0a, #ff5e00);
     border-radius: 20px;
     color: #fff;
     text-decoration: none;
