@@ -10,7 +10,7 @@ import logo from '../components/Logo.png';
 const HomePage = ({ onGenreSelect }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const [ setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
 
@@ -95,26 +95,28 @@ const HomePage = ({ onGenreSelect }) => {
       </nav>
       <div className="container">
         {searchTerm && movies.length > 0 && (
-          <h2 className="search-results-header">
-            Search Results for "{searchTerm}"
-          </h2>
-        )}
-        <div className="movies-grid">
-          {movies.map((movie) => (
-            <div 
-              key={movie.id} 
-              className="movie-card"
-              onClick={() => handleMovieClick(movie.id)}
-            >
-              <img 
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
-                alt={movie.title} 
-                className="movie-poster"
-              />
-              <h3 className="movie-title">{movie.title}</h3>
+          <div className="movies-list">
+            <h2 className="category-title">
+              Search Results for "{searchTerm}"
+            </h2>
+            <div className="movies-grid">
+              {movies.map((movie) => (
+                <div 
+                  key={movie.id} 
+                  className="movie-list-item"
+                  onClick={() => handleMovieClick(movie.id)}
+                >
+                  <img 
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} 
+                    alt={movie.title} 
+                    className="movie-poster"
+                  />
+                  <h3 className="movie-title">{movie.title}</h3>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
         {selectedMovie && (
           <div className="movie-popup">
