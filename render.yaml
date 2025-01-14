@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: cc-movies
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_TMDB_API_KEY
+        sync: false
+      - key: REACT_APP_BASE_URL
+        value: https://api.themoviedb.org/3
