@@ -1,0 +1,209 @@
+.movie-card {
+  position: relative;
+  width: 250px;
+  margin: 10px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+
+.movie-card :hover {
+  background-color: #ff5e00;
+}
+
+/* Poster image styling */
+.movie-poster {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Floating trailer card (hidden by default) */
+.floating-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden; /* Hidden by default */
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border-radius: 8px;
+}
+
+/* Show floating card when hovering over the movie card */
+.movie-card:hover .floating-card {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Hover effect for scaling the movie poster */
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+/* Trailer content styling inside the floating card */
+.floating-card iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Movie Title Styling */
+.movie-title {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  color: #ff5e00;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  margin-bottom: 0px;
+}
+
+
+.movie-title :hover {
+  color: #fff;
+}
+
+/* Movie Grid Styling */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+  padding: 20px;
+}
+
+/* Container for individual movie item */
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Movie title below the poster */
+.movie-item .movie-title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: bold;
+}
+  .movie-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  .movie-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.356);
+  }
+
+  .movie-popup-content {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    width: 75%;
+    height: 85vh;
+    overflow-y: auto;
+    z-index: 1001;
+    box-sizing: border-box;
+  }
+
+  /* Large screens */
+  @media screen and (min-width: 1200px) {
+    .movie-popup-content {
+      width: 65%;
+      max-width: 1200px;
+    }
+  }
+
+  /* Medium screens */
+  @media screen and (max-width: 992px) {
+    .movie-popup-content {
+      width: 80%;
+      height: 90vh;
+    }
+  }
+
+  /* Small screens */
+  @media screen and (max-width: 768px) {
+    .movie-popup-content {
+      width: 90%;
+      height: 95vh;
+    }
+  }
+
+  /* Extra small screens */
+  @media screen and (max-width: 480px) {
+    .movie-popup-content {
+      width: 95%;
+      height: 98vh;
+      margin: 5px;
+    }
+  }
+
+  /* Ensure content inside popup stays responsive */
+  .movie-popup-content img,
+  .movie-popup-content iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .popup-close-btn {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #ff5e00;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1002;
+  }
+
+  .popup-close-btn:hover {
+    background: rgba(224, 66, 3, 0.8);
+  }
+
+.trailer-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.trailer-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

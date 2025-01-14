@@ -1,0 +1,157 @@
+.hero-slide {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.hero-swiper,
+.hero-slide-item {
+  height: 100vh;
+  width: 100%;
+  border: none;
+}
+
+.hero-slide-backdrop {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-slide-backdrop::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.849) 20%, rgba(0, 0, 0, 0.582));
+}
+
+.hero-slide-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  gap: 50px;
+}
+
+.hero-slide-content {
+  position: relative;
+  width: 80%;
+  max-width: 800px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #ff5e00;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.category-name {
+  font-size: 1.5rem;
+  margin-right: 89%;
+  margin-bottom: 20px; /* Space between category name and movie list */
+  color: white;
+}
+
+.trailer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 10%;
+  gap: 50px;
+}
+
+.hero-slide-info {
+  flex: 1;
+  color: white;
+  max-width: 50%;
+}
+
+.hero-slide-info h2 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero-slide-info .overview {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 1.2rem;
+}
+
+.rating {
+  color: #ff5e00;
+}
+
+.hero-slide-poster {
+  flex: 0 0 400px;
+}
+
+.hero-slide-poster img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(255, 60, 0, 0.5);
+}
+
+.movie-overview {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.close-btn {
+  align-self: flex-start;
+  padding: 10px 20px;
+  background-color: #ff5e00;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.close-btn:hover {
+  background-color: #ff5e00;
+}
+
+.swiper-button-next{
+  color: #ff5e00;
+  height: 20px;
+  width: 20px;
+  padding-left: 20px;
+}
+
+.swiper-button-prev{
+  color: #ff5e00;
+  height: 20px;
+  width: 20px;
+  padding-left: 20px;
+}
+
+.h1{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+

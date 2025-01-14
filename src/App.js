@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import HomePage from "./pages/HomePage";
+import { useState } from "react";
+import MovieList from "./components/MovieList";
+import HeroSlide from "./components/HeroSlide";
+import MovieCard from "./components/MovieCard";
 
 function App() {
+  const [selectedGenre, setSelectedGenre] = useState("");
+  const [categoryName, setCategoryName] = useState("Popular");
+
+  const constructFetchUrl = (genreId) => {
+    if (genreId) {
+      return `${process.env.REACT_APP_BASE_URL}/discover/movie?with_genres=${genreId}&api_key=${process.env.REACT_APP_API_KEY}`;
+    }
+    return `${process.env.REACT_APP_BASE_URL}/movie/popular?api_key=${process.env.REACT_APP_API_KEY}`;
+  };
+
+  const handleGenreSelect = (genreId, genreName) => {
+    setSelectedGenre(genreId);
+    setCategoryName(genreName);
+  };
+
+  const fetchUrl = constructFetchUrl(selectedGenre);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <HeroSlide />
+      <MovieCard />
+      <HomePage onGenreSelect={handleGenreSelect} />
+      <MovieList fetchUrl={fetchUrl} categoryName={categoryName} />
     </div>
   );
 }
